@@ -3,20 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stack Implementation</title>
+    <title>Stack and Counter Application</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Stack Implementation</h1>
-        <input type="text" id="inputElement" placeholder="Enter a value">
-        <button id="pushButton">Push</button>
-        <button id="popButton">Pop</button>
-        <button id="peekButton">Peek</button>
-        <h2>Stack:</h2>
-        <ul id="stackList"></ul>
-        <h2>Top Element:</h2>
-        <p id="topElement"></p>
+    <div id="app">
+        <h1>Stack Application</h1>
+        <div id="stack-controls">
+            <h2>Stack Operations</h2>
+            <input type="number" id="stack-input" placeholder="Enter a number" />
+            <button id="push-button">Push</button>
+            <button id="pop-button">Pop</button>
+            <button id="peek-button">Peek</button>
+            <div id="stack-output"></div>
+        </div>
+        
+        <div id="counter">
+            <h2>Counter</h2>
+            <h3 id="count-display">Counter: 0</h3>
+            <button id="increment-button">Increment</button>
+            <button id="decrement-button">Decrement</button>
+            <button id="reset-button">Reset</button>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>

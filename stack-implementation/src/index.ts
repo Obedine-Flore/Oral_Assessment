@@ -1,6 +1,6 @@
 import { Stack } from './stack';
 
-const stack = new Stack<number>();
+const stack = new Stack();
 
 stack.push(1);
 stack.push(2);

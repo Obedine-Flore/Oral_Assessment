@@ -1,25 +1,34 @@
-export class Stack<T> {
-    private items: T[] = [];
+// src/stack.ts
+export class Stack {
+    private items: any[];
 
-    push(item: T): void {
+    constructor() {
+        this.items = [];
+    }
+
+    push(item: any) {
         this.items.push(item);
     }
 
-    pop(): T | undefined {
+    pop() {
         if (this.isEmpty()) {
-            return undefined; // or throw an error
+            return null; // or throw an error
         }
         return this.items.pop();
     }
 
-    peek(): T | undefined {
+    peek() {
         if (this.isEmpty()) {
-            return undefined; // or throw an error
+            return null; // or throw an error
         }
         return this.items[this.items.length - 1];
     }
 
-    isEmpty(): boolean {
+    isEmpty() {
         return this.items.length === 0;
+    }
+
+    size() {
+        return this.items.length;
     }
 }

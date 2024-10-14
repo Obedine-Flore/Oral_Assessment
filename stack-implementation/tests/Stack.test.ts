@@ -1,10 +1,10 @@
 import { Stack } from '../src/stack';
 
 describe('Stack', () => {
-    let stack: Stack<number>;
+    let stack: Stack;
 
     beforeEach(() => {
-        stack = new Stack<number>();
+        stack = new Stack();
     });
 
     test('should be empty initially', () => {

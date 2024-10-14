@@ -1,3 +1,4 @@
+// Stack implementation
 class Stack {
     constructor() {
         this.items = [];
@@ -8,57 +9,65 @@ class Stack {
     }
 
     pop() {
-        if (this.isEmpty()) {
-            return "Underflow";
-        }
+        if (this.isEmpty()) return null;
         return this.items.pop();
+    }
+
+    peek() {
+        if (this.isEmpty()) return null;
+        return this.items[this.items.length - 1];
     }
 
     isEmpty() {
         return this.items.length === 0;
     }
-
-    peek() {
-        return this.isEmpty() ? "No elements" : this.items[this.items.length - 1];
-    }
-
-    getStack() {
-        return this.items;
-    }
 }
 
+// Create a new stack instance
 const stack = new Stack();
-const stackList = document.getElementById("stackList");
-const inputElement = document.getElementById("inputElement");
-const pushButton = document.getElementById("pushButton");
-const popButton = document.getElementById("popButton");
-const peekButton = document.getElementById("peekButton");
-const topElement = document.getElementById("topElement");
 
-function updateStackDisplay() {
-    stackList.innerHTML = ""; // Clear the list
-    stack.getStack().forEach(item => {
-        const li = document.createElement("li");
-        li.textContent = item;
-        stackList.appendChild(li);
-    });
-}
+// Stack operation handlers
+const stackInput = document.getElementById('stack-input');
+const stackOutput = document.getElementById('stack-output');
 
-pushButton.addEventListener("click", () => {
-    const value = inputElement.value;
-    if (value) {
+document.getElementById('push-button').onclick = () => {
+    const value = parseInt(stackInput.value);
+    if (!isNaN(value)) {
         stack.push(value);
-        inputElement.value = ""; // This line clears the input
-        updateStackDisplay();
+        stackOutput.textContent = `Pushed: ${value}`;
+        stackInput.value = ''; // Clear input field
     }
-});
+};
 
-popButton.addEventListener("click", () => {
-    stack.pop();
-    updateStackDisplay();
-    topElement.textContent = ""; // This line clears the top element display
-});
+document.getElementById('pop-button').onclick = () => {
+    const poppedValue = stack.pop();
+    stackOutput.textContent = poppedValue !== null ? `Popped: ${poppedValue}` : 'Stack is empty';
+};
 
-peekButton.addEventListener("click", () => {
-    topElement.textContent = stack.peek(); // This line displays the top element
-});
+document.getElementById('peek-button').onclick = () => {
+    const peekedValue = stack.peek();
+    stackOutput.textContent = peekedValue !== null ? `Peeked: ${peekedValue}` : 'Stack is empty';
+};
+
+// Counter functionality
+let count = 0;
+
+document.getElementById('increment-button').onclick = () => {
+    count++;
+    updateCounterDisplay();
+};
+
+document.getElementById('decrement-button').onclick = () => {
+    count--;
+    updateCounterDisplay();
+};
+
+document.getElementById('reset-button').onclick = () => {
+    count = 0;
+    updateCounterDisplay();
+};
+
+// Function to update the counter display
+function updateCounterDisplay() {
+    document.getElementById('count-display').textContent = `Counter: ${count}`;
+}
